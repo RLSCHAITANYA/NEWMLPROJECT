@@ -14,6 +14,8 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
+from src.components.model_train import ModelTrainer
+from src.components.model_train import ModelTrainerConfig
 
 
 #here we create a class so that when ever we perform a data ingestion there should be some input that may be probably
@@ -60,8 +62,10 @@ if __name__=="__main__":
     train_data,test_data=obj.initiate_data_ingestion()
             
     data_transformation=DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
 
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initaite_model_trainer(train_arr,test_arr))
 
 
 #1.here we initially create a class DataIngestionConfig where we create a path for train test and raw data 
