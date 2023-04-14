@@ -12,13 +12,17 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
+
+
 #here we create a class so that when ever we perform a data ingestion there should be some input that may be probably
-# required by data ingestion component the input can be like where to save training data text data raw data paths 
+# required by data ingestion component the input can be like where to save training data test data raw data paths 
 # 1.
 @dataclass #inside a class to define the class variable we use init but using @dataclass we can directly define variables
 class DataIngestionConfig:
     train_data_pata:str=os.path.join('artifacts',"train.csv")
-    test_data_pata:str=os.path.join('artifacts',"test.csv")
+    test_data_pata:str=os.path.join('artifacts',"test.csv")     #inputs we provided
     raw_data_pata:str=os.path.join('artifacts',"data.csv")
 
 # 2.
@@ -53,9 +57,10 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj=DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
             
-
+    data_transformation=DataTransformation()
+    data_transformation.initiate_data_transformation(train_data,test_data)
 
 
 
