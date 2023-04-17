@@ -1,5 +1,5 @@
 #componenets-->__init.py will be created as package and it also be exported/imported to other file location.
-componenets are like modules which we create like data ingestion etc
+componenets are like modules which we create like data ingestion etc.
 data ingestion-->reading data from specific data base
 
 This project is a comprehensive machine learning pipeline designed to automate the process of data ingestion, transformation, and model training. The pipeline is built using modular programming techniques, which allows for flexibility, scalability, and ease of maintenance.
